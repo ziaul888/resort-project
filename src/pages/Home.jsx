@@ -1,10 +1,9 @@
 import React from 'react'
+import Hero from '../component/Hero'
 
-export const Home = () => {
+ const Home = () => {
     return (
-        <div>
-            <h1>hellow from home</h1>
-        </div>
+     <Hero hero="defaultHero"></Hero>
     )
 }
 export default Home

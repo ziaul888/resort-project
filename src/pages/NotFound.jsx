@@ -1,10 +1,10 @@
 import React from 'react'
+import Hero from '../component/Hero'
+//import Hero from "../component/Hero"
 
-export const NotFound = () => {
+ const NotFound = () => {
     return (
-        <div>
-            <h1>not found</h1>
-        </div>
+        <Hero></Hero>
     )
 }
 export default NotFound

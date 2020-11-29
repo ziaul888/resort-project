@@ -1,10 +1,8 @@
 import React from 'react'
-
+import Hero from "../component/Hero"
 export const Room = () => {
     return (
-        <div>
-            <h1>hellow from</h1>
-        </div>
+        <Hero hero ="roomsHero"></Hero>
     )
 }
 export default Room
