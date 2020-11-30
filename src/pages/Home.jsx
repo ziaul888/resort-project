@@ -2,6 +2,7 @@ import React from 'react'
 import Banner from '../component/Banner'
 import Hero from '../component/Hero'
 import {Link} from "react-router-dom"
+import FeatureRoom from '../component/FeatureRoom'
 import Services from '../component/Services'
 
  const Home = () => {
@@ -13,6 +14,7 @@ import Services from '../component/Services'
          </Banner>
      </Hero>
      <Services/>
+     <FeatureRoom/>
      </>
     )
 }
