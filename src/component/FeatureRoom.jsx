@@ -1,17 +1,30 @@
 import React, { Component } from 'react'
 import {RoomContext} from "../Context"
+import Loading from "./Loading"
+import Rooms from "./Rooms"
+import Title from "./Title"
 
 export default class FeatureRoom extends Component {
     
     static contextType = RoomContext
    
-    render() {
-        const value = this.context
-        console.log(value)
+    render() { 
+        let {loading, featuredRooms: rooms }=this.context;
+
+        rooms = rooms.map(room=>{
+            return <Rooms  key={room.id} room={room}/>
+        })
+        //console.log(rooms);
+        //const value = this.context
+        //console.log(value)
         return (
-            <div>
-                <h1>h feature</h1>
-            </div>
+            <section className="featured-rooms">
+              <Title title="feature rooms"/> 
+              <div className="featured-rooms-center">
+                  {loading?<Loading/>:rooms}
+             </div>              
+                
+            </section>
         )
     }
 }
