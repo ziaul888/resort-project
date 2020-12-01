@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {RoomContext} from "../Context"
 import Loading from "./Loading"
-import Rooms from "./Rooms"
+import Room from "./Room"
 import Title from "./Title"
 
 export default class FeatureRoom extends Component {
@@ -12,7 +12,7 @@ export default class FeatureRoom extends Component {
         let {loading, featuredRooms: rooms }=this.context;
 
         rooms = rooms.map(room=>{
-            return <Rooms  key={room.id} room={room}/>
+            return <Room  key={room.id} room={room}/>
         })
         //console.log(rooms);
         //const value = this.context
