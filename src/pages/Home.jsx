@@ -10,7 +10,7 @@ import Services from '../component/Services'
         <>
      <Hero hero="defaultHero">
          <Banner title="Luxurious Rooms" subtitle="Deluxe Rooms Starting At $299">
-             <Link to="/room" className="btn-primary">Rooms</Link>
+             <Link to="/rooms" className="btn-primary">Rooms</Link>
          </Banner>
      </Hero>
      <Services/>

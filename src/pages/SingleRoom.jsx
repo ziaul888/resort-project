@@ -28,7 +28,7 @@ import StyledHero from '../component/StyledHero'
       return (
         <div className="error">
           <h3>no such room could be found...</h3>
-          <Link to="/room " className="btn-primary">
+          <Link to="/rooms " className="btn-primary">
             back to rooms
           </Link>
         </div>
@@ -51,7 +51,7 @@ import StyledHero from '../component/StyledHero'
           <>
            <StyledHero img={mainImg}>
                <Banner title={`${name} room`}>
-                   <Link to="/room" className="btn-primary">
+                   <Link to="/rooms" className="btn-primary">
                        back to rooms
                    </Link>
                </Banner>
