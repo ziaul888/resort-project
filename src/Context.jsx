@@ -61,7 +61,7 @@
 
      handleChange = event =>{
           const target = event.target
-          const value = event.type === "checkbox" ? target.checked :target.value
+          const value = target.type === "checkbox" ? target.checked :target.value
           const name = event.target.name
           this.setState({
               [name]:value
@@ -74,14 +74,41 @@
          let {
              rooms,type, capacity, price,minSize,maxSize,breakfast,pets
          }=this.state
-
+// all the rooms
 let tempRooms=[...rooms];
+
+//transform value
+capacity=parseInt(capacity)
+price=parseInt(price)
+
+
+//filter by type
 if ( type !== "all"){
     tempRooms= tempRooms.filter(room=>room.type ===type)
 }
+//filter by capacity
+if (capacity!==1){
+    tempRooms=tempRooms.filter(room=>room.capacity>=capacity)
+    
+}
+// filter by price
+tempRooms=tempRooms.filter(room=>room.price<= price)
+//filter by size
+//filter by breakfast and pets
+if(breakfast){
+tempRooms=tempRooms.filter(room =>room.breakfast === true)
+}
+if(pets){
+    tempRooms=tempRooms.filter(room =>room.pets === true)
+    }
+   // tempRooms=tempRooms.filter(room=> room.size>=minSize && room.size<=maxSize);
+
 this.setState({
     sortedRooms:tempRooms
-})         
+})  
+// filter by price
+
+
 console.log("hello");
      }
      render() {
