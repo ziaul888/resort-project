@@ -1,6 +1,8 @@
  import React, { Component } from 'react';
- import items from './data.js'
+// import items from './data.js'
+ import Client from "./Contentful"
 // import Loading from "./Loading"
+
 
  const RoomContext= React.createContext();
  
@@ -23,11 +25,13 @@
 
      }
 
-
-
-
-     componentDidMount(){
-         let  rooms=this.formatData(items)
+//get data
+getData=async ()=>{
+    try{
+        let response =await Client.getEntries({
+            content_type :"breachResortRoom"
+        })
+        let  rooms=this.formatData(response.items)
          //console.log(rooms);
          let featuredRooms= rooms.filter(room=> room.featured === true);
          let maxPrice =Math.max(...rooms.map(item =>item.price)) 
@@ -42,6 +46,15 @@
         maxPrice,
         maxSize
         }) 
+    }catch (error){
+        console.log(error)
+    }
+}
+
+
+     componentDidMount(){
+         this.getData()
+         
      }
      formatData(items){
          let temItems = items.map(item =>{
@@ -72,7 +85,14 @@
      }
      filterRooms=()=>{
          let {
-             rooms,type, capacity, price,minSize,maxSize,breakfast,pets
+      rooms,
+      type,
+      capacity,
+      price,
+      minSize,
+      maxSize,
+      breakfast,
+      pets
          }=this.state
 // all the rooms
 let tempRooms=[...rooms];
@@ -94,6 +114,7 @@ if (capacity!==1){
 // filter by price
 tempRooms=tempRooms.filter(room=>room.price<= price)
 //filter by size
+
 //filter by breakfast and pets
 if(breakfast){
 tempRooms=tempRooms.filter(room =>room.breakfast === true)
@@ -101,8 +122,9 @@ tempRooms=tempRooms.filter(room =>room.breakfast === true)
 if(pets){
     tempRooms=tempRooms.filter(room =>room.pets === true)
     }
-   // tempRooms=tempRooms.filter(room=> room.size>=minSize && room.size<=maxSize);
-
+    //filter by size
+    tempRooms = tempRooms.filter(
+        room => room.size >= minSize && room.size <= maxSize)
 this.setState({
     sortedRooms:tempRooms
 })  
