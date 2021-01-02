@@ -89,8 +89,8 @@ getData=async ()=>{
       type,
       capacity,
       price,
-      minSize,
-      maxSize,
+     // minSize,
+      //maxSize,
       breakfast,
       pets
          }=this.state
@@ -123,8 +123,8 @@ if(pets){
     tempRooms=tempRooms.filter(room =>room.pets === true)
     }
     //filter by size
-    tempRooms = tempRooms.filter(
-        room => room.size >= minSize && room.size <= maxSize)
+   // tempRooms = tempRooms.filter(
+       // room => room.size >= minSize && room.size <= maxSize);  
 this.setState({
     sortedRooms:tempRooms
 })  
